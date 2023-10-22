@@ -38,6 +38,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                 case 405:
                 case 406:
                 case 409:
+                case 404:
                   this.handleAuthError(error);
                   break;
               }
