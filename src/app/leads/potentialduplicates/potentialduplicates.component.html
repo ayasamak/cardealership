@@ -1,0 +1,42 @@
+
+<section class="m-5" *ngIf="potentialduplicates.length>0 else nodata;">
+  <h3 class="fw-bold mb-3 title text-center">Potential Duplicates Of Lead</h3>
+<div class="leads">
+  <table class="table table-bordered align-middle mb-0 bg-white">
+    <thead>
+      <tr>
+        <th>Is This A Duplicate ?</th>
+        <th>first_name</th>
+        <th>last_name</th>
+        <th>email</th>
+        <th>source</th>
+        <th>home_phone</th>
+        <th>cell_phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lead of potentialduplicates">
+        <th scope="row">
+          <div class="form-check d-flex align-items-center justify-content-center">
+            <input class="form-check-input" type="checkbox" [checked]="lead?.duplicate_of==lead_id?true:false"  (change)="leadChange($event,lead)" />
+          </div>
+        </th>
+        <td>{{lead?.first_name}}</td>
+        <td>{{lead?.last_name}}</td>
+        <td>{{lead?.email}}</td>
+        <td [class]="'leadstatus-' + lead.source.toLowerCase()" class="source mt-2 badge rounded-pill" >{{lead?.source}}</td>
+        <td>{{lead?.home_phone}}</td>
+        <td>{{lead?.cell_phone}}</td>
+      </tbody>
+  </table>
+</div>
+
+</section>
+<ng-template #nodata>
+  <div class="d-flex flex-column align-items-center justify-content-center">
+    <img src="../../../assets/noFound.jpg" />
+    <p class="text-center fw-bold text-danger fs-4">No Potential Duplicates To Show</p>
+  </div>
+</ng-template>
+
+

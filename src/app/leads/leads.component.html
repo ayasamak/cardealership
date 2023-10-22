@@ -1,0 +1,33 @@
+
+<section class="m-5">
+  <h3 class="fw-bold mb-3 title text-center">Leads For Sales</h3>
+<div class="leads">
+  <table class="table table-bordered align-middle mb-0 bg-white">
+    <thead>
+      <tr>
+        <th>first_name</th>
+        <th>last_name</th>
+        <th>email</th>
+        <th>source</th>
+        <th>home_phone</th>
+        <th>cell_phone</th>
+        <th>duplicate_of</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lead of leads">
+        <td>{{lead?.first_name}}</td>
+        <td>{{lead?.last_name}}</td>
+        <td>{{lead?.email}}</td>
+        <td [class]="'leadstatus-' + lead.source.toLowerCase()" class="source mt-2 badge rounded-pill" >{{lead?.source}}</td>
+        <td>{{lead?.home_phone}}</td>
+        <td>{{lead?.cell_phone}}</td>
+        <td>{{lead?.duplicate_of}}</td>
+        <td [routerLink]="['/potentialduplicates', lead?.lead_id]"> <button type="button" class="btn btn-link btn-sm btn-rounded" >View</button></td>
+      </tbody>
+  </table>
+</div>
+
+</section>
+
